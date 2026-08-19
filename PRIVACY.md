@@ -58,4 +58,4 @@ Optional, requested only if you turn the feature on:
 Any change to this policy will appear on this page with a new date.
 
 Questions, bug reports and privacy requests:
-https://github.com/YOUR_USERNAME/chrono-tracker/issues
+https://github.com/RedemtRed/chrono-tracker/issues
