@@ -58,7 +58,7 @@ default) are deleted automatically. See [PRIVACY.md](PRIVACY.md).
 ## Install from source
 
 ```
-git clone https://github.com/YOUR_USERNAME/chrono-tracker.git
+git clone https://github.com/RedemtRed/chrono-tracker.git
 ```
 
 Then in Chrome:
