@@ -1,0 +1,187 @@
+/* Design tokens: an instrument panel — deep petrol ground, amber backlight,
+   tabular monospace numerals. */
+
+:root {
+  --ink: #0E1A22;
+  --panel: #14242E;
+  --raise: #1A303C;
+  --line: #23404F;
+  --chalk: #E7EFF3;
+  --mute: #7D97A5;
+  --amber: #F5B944;
+  --coral: #E8825A;
+
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    sans-serif;
+
+  --r: 6px;
+  color-scheme: dark; /* keeps native date pickers and spinners dark */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--chalk);
+  font-family: var(--sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The one decorative device that repeats across both screens */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 7px 12px;
+  transition: border-color 0.12s, background 0.12s, color 0.12s, opacity 0.12s;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--mute);
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+button.primary {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+button.primary:hover:not(:disabled) {
+  background: rgba(245, 185, 68, 0.1);
+}
+
+button.danger:hover:not(:disabled) {
+  border-color: var(--coral);
+  color: var(--coral);
+}
+
+/* A table cell that behaves like a link */
+button.linkish {
+  border: 0;
+  padding: 0;
+  border-radius: 2px;
+  font-size: 12.5px;
+  text-align: left;
+  color: var(--chalk);
+  border-bottom: 1px dashed transparent;
+}
+
+button.linkish:hover {
+  color: var(--amber);
+  border-bottom-color: rgba(245, 185, 68, 0.5);
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='date'],
+select {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--chalk);
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 5px 8px;
+}
+
+select {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--amber);
+  outline: none;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--ink);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+input[type='checkbox']:hover {
+  border-color: var(--mute);
+}
+
+input[type='checkbox']:checked {
+  background: var(--amber);
+  border-color: var(--amber);
+}
+
+input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 3px;
+  height: 7px;
+  border: solid var(--ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(42deg);
+}
+
+.dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chrono — stats</title>
+    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <div>
+          <div class="eyebrow">chrono</div>
+          <h1>Where your time goes</h1>
+        </div>
+        <nav class="tabs" id="tabs">
+          <button data-range="1" class="on">Day</button>
+          <button data-range="7">7 days</button>
+          <button data-range="30">30 days</button>
+        </nav>
+      </header>
+
+      <div class="nav">
+        <button class="step" id="prev" aria-label="Earlier">&lsaquo;</button>
+        <input type="date" id="picker" aria-label="Pick a date" />
+        <button class="step" id="next" aria-label="Later">&rsaquo;</button>
+        <span class="nav-label num" id="navLabel"></span>
+        <button id="today" class="ghost">Today</button>
+      </div>
+
+      <section class="kpis" id="kpis"></section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="eyebrow" id="chartLabel">by hour</span>
+          <span class="filter" id="filter" hidden>
+            <span class="dot" id="filterDot"></span>
+            <span id="filterName"></span>
+            <button id="filterClear" aria-label="Show all sites">&times;</button>
+          </span>
+          <span class="eyebrow" id="chartHint"></span>
+        </div>
+        <div class="chart" id="chart"></div>
+        <div class="chart-axis" id="chartAxis"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <span class="eyebrow">sites and daily limits</span>
+          <span class="eyebrow">click a site to chart it alone</span>
+        </div>
+        <p class="note tight">
+          A limit counts a single day. When it runs out you get a notification,
+          the toolbar badge turns red, and — if you switch it on below — the page
+          is dimmed with a Snooze and a Close tab button. Nothing is blocked
+          silently and no tab is ever closed on its own.
+        </p>
+        <table class="grid" id="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Site</th>
+              <th class="r">Time</th>
+              <th class="r">Share</th>
+              <th class="r lim-head">Daily limit</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <p class="empty" id="tableEmpty" hidden>
+          No data for this period. Pick another date, or open a few sites and
+          come back.
+        </p>
+      </section>
+
+      <div class="two">
+        <section class="card">
+          <div class="card-head"><span class="eyebrow">settings</span></div>
+          <div class="settings" id="settings"></div>
+          <p class="hint" id="hint" hidden></p>
+        </section>
+
+        <section class="card">
+          <div class="card-head"><span class="eyebrow">your data</span></div>
+          <p class="note">
+            Everything is kept in this browser only and is never sent anywhere.
+            Exports cover the period you are looking at.
+          </p>
+          <div class="actions">
+            <button id="csv">Download CSV</button>
+            <button id="json">Download JSON</button>
+            <button id="wipe" class="danger">Erase history</button>
+          </div>
+          <p class="note" id="wipeNote" hidden>
+            Click again to erase every record. This cannot be undone.
+          </p>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>
